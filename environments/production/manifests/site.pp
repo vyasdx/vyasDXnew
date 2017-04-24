@@ -1,6 +1,14 @@
-node default {
-        file { '/root/demofile.txt':
+node "node1.rps" {
+	file { "/root/${fqdn}.txt":
+		ensure => present,
+		content => "My file is - ${hostname}",
+}
+}
+node "node2.rps" {
+        file { "/root/${fqdn}.txt":
                 ensure => present,
-		content => "Hello Iam from Master",
-	     }
+                content => "My file is - ${hostname}",
+}
+}
+node default {
 }
